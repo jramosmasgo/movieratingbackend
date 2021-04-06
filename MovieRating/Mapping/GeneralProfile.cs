@@ -3,6 +3,7 @@ using MovieRating.Entities;
 using MovieRating.Mapping.ActorViewModel;
 using MovieRating.Mapping.CategoryViewModel;
 using MovieRating.Mapping.MovieViewModel;
+using MovieRating.Mapping.Users;
 
 namespace MovieRating.Mapping
 {
@@ -18,6 +19,9 @@ namespace MovieRating.Mapping
 
             CreateMap<Actor, GetActorViewModel>().ReverseMap();
             CreateMap<CreateActorViewModel, Actor>();
+
+            CreateMap<User, GetUserViewModel>().ReverseMap();
+            CreateMap<CreateUserViewModel, User>();
         }
     }
 }

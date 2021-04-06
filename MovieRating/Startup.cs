@@ -18,9 +18,11 @@ namespace MovieRating
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            StaticConfig = configuration;
         }
 
         public IConfiguration Configuration { get; }
+        public static IConfiguration StaticConfig { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -66,6 +68,7 @@ namespace MovieRating
             services.AddTransient<ICategoryRepositoryAsync, CategoryRepositoryAsync>();
             services.AddTransient<IMovieRepositoryAsync, MovieRepositoryAsync>();
             services.AddTransient<IActorRepositoryAsync, ActorRepositoryAsync>();
+            services.AddTransient<IUserRepositoryAsync, UserRepositoryAsync>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

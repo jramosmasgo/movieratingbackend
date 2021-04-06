@@ -48,6 +48,11 @@ namespace MovieRating.Repository
             return await _entity.Where(filters).ToListAsync();
         }
 
+        public async Task<T> GetByFilter(Expression<Func<T, bool>> filter)
+        {
+            return await _entity.Where(filter).FirstOrDefaultAsync();
+        }
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _entity.FirstOrDefaultAsync(x => x.Id == id);

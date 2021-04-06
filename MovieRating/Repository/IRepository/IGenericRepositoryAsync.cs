@@ -14,5 +14,6 @@ namespace MovieRating.Repository.IRepository
         Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T,object>>[] includes);
         Task<IEnumerable<T>> GetAllAsyncFilters(Expression<Func<T, bool>> filters);
         Task<T> AddAync(T entity);
+        Task<T> GetByFilter(Expression<Func<T, bool>> filter);
     }
 }

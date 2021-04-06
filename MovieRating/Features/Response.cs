@@ -12,5 +12,11 @@
             this.Data = Data;
             this.Message = Message;
         }
+        public Response(T Data,string Message,bool Status)
+        {
+            this.Status = Status;
+            this.Data = Data;
+            this.Message = Message;
+        }
     }
 }

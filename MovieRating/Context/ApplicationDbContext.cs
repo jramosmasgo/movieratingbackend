@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieRating.Context
 {
-    public class ApplicationDbContext :DbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -16,6 +16,9 @@ namespace MovieRating.Context
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<MovieActor> MovieActors { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
@@ -41,7 +44,8 @@ namespace MovieRating.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Category>(entity =>{
+            builder.Entity<Category>(entity =>
+            {
                 entity.ToTable("Category");
             });
 
@@ -58,6 +62,16 @@ namespace MovieRating.Context
             builder.Entity<MovieActor>(entity =>
             {
                 entity.ToTable("MovieActor");
+            });
+
+            builder.Entity<User>(entity =>
+            {
+                entity.ToTable("User");
+            });
+
+            builder.Entity<Role>(entity =>
+            {
+                entity.ToTable("Role");
             });
         }
     }
